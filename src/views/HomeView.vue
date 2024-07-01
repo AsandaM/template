@@ -5,8 +5,11 @@
   </div> -->
 
   <div class="container text-center">
-  <div class="row">
-    <div class="col align-self-start ring-container">
+    <div class="row">
+    <div class="col align-self-center ring-container">
+      <div class="align-self-center email-container">
+          <p class="email-text fst-italic">_______ asandamehlo088@gmail.com _______</p>
+        </div>
       <div class="ring">
         <i style="--clr:#00ff0a;"></i>
         <i style="--clr:#ff0057;"></i>
@@ -14,11 +17,10 @@
         <div class="image">
           <img src="https://asandam.github.io/images/asaM.jpg" alt="Your Name" class="img-fluid rounded-circle" style="max-width: 350px;"> 
         </div>
-
       </div>
     </div>
     <div id="back" class="col align-self-center">
-      <HelloWorld msg="Welcome to My Portfolio"/>
+      <HelloWorld msg="Welcome to My Portfolio"/> 
     </div>
   </div>
 </div>
@@ -101,8 +103,28 @@ export default {
 }
 
 #back{
-  background-color: rgba(201, 232, 160, 0.6);
-  /* height: calc(100vh - 300px); */
+  background-color: rgba(145, 186, 159, 0.6);
+}
+
+.email-container {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(180deg);
+  writing-mode: vertical-lr;
+  font-size: 18px; /* Adjust as needed */
+  padding: 10px;
+  z-index: 1000; /* Ensure it stays on top of other elements */
+  
+}
+
+.email-text {
+  white-space: nowrap; /* Keeps the email in one line */
+  color: #1a3a33;
+}
+
+.container {
+  padding-left: 100px; /* Adjust this value to create space for the email navbar */
 }
 
 </style>

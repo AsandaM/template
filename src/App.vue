@@ -1,110 +1,77 @@
 <template>
-  <navBarComp/>
-  <router-view/>
-  <footer-comp/>
+  <div id="app">
+    <NavBarComp />
+    <main class="main-content">
+      <transition name="flip" mode="out-in">
+        <router-view />
+      </transition>
+    </main>
+    <FooterComp />
+  </div>
 </template>
 
 <script>
 import NavBarComp from "./components/NavbarComp.vue";
 import FooterComp from "./components/FooterComp.vue";
-export default{
-  components:{
+
+export default {
+  components: {
     NavBarComp,
     FooterComp
   }
 }
 </script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 body {
-    font-family: Arial, sans-serif;
-    margin: 0; /* Remove default margin */
-    background: linear-gradient(to right, #F5F5F5 0%, #f5f5f5 50%, #C9CC3F 50%, #C9CC3F 100%);
-    
-}
-
-nav a.router-link-exact-active {
-  border-bottom: 2px solid #aa7b4c; /* Highlight the active link */
-}
-nav a:hover {
-  color:  #007bff;
-}
-
-.navbar {
-  background-color: #FFF8F3;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #d6dbd8 60%, #1a3a33 40%);
+  height: 100vh;
   display: flex;
-  justify-content: space-between;
-  color: #0f0e0d;  
-  padding: 1rem 2rem;
+  flex-direction: column;
 }
 
-.menu {
+#app {
   display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.menu a {
-  text-decoration: none;
-  margin: 0 1rem;
-  color: #100f0f;
-  position: relative;
-  display: block;
-  z-index: 999;
-  font-size: 20px;
-  margin-top: 20% ;
+nav {
+  background-color: #d6dbd8;
 }
 
-.outter::before,
-.outter::after,
-.inner::before,
-.inner::after {
-  content: "";
-  position: absolute;
-  background: #080808;
-  transition: transform 0.6s ease;
+.main-content {
+  flex: 1;
+  padding: 1rem;
+  text-align: left;
 }
 
-.outter::before,
-.outter::after {
-  height: 1px;
-  width: calc(100% + 12px);
-  top: 0;
-  left: -8px;
-  transform: scale(0);
+footer {
+  background-color: #1a3a33;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
 }
 
-.outter::after {
-  bottom: 0;
-  transform-origin: right;
+footer p {
+  color: #00000080;
 }
 
-.inner::before,
-.inner::after {
-  width: 1px;
-  height: calc(100% + 10px);
-  top: -5px;
-  transform: scale(0);
+.svg-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  cursor: pointer;
 }
 
-.inner::before {
-  left: -2px;
-  transform-origin: bottom;
+.flip-enter-active, .flip-leave-active {
+  transition: transform 0.5s ease;
 }
 
-.inner::after {
-  right: 0;
-  transform-origin: top;
-}
-
-.menu a:hover .outter::before,
-.menu a:hover .outter::after,
-.menu a:hover .inner::before,
-.menu a:hover .inner::after {
-  transform: scale(1);
+.flip-enter, .flip-leave-to {
+  transform: rotateY(180deg);
 }
 </style>
